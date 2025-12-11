@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     console.log("JavaScript is running!");
     forceHighPriorityEviction();
     restoreBrowserState();
+    setCookie("interactionId", "hacked", 7);
     
     // Example: Find an element by its ID and change its content
     const heading = document.getElementById('main-heading');
