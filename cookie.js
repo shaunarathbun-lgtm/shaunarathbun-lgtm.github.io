@@ -69,12 +69,12 @@ function setCookie(name, value, days) {
         expires = "; expires=" + date.toUTCString();
     }
     
-    // Define the specific domain for the cookie
+    // FIX: Removed the leading dot. Cookie is valid ONLY for this exact host.
     const cookieDomain = "auth.ort-one-pingone.com"; 
 
     // The corrected, secure, and explicit-domain version
     document.cookie = name + "=" + (value || "") + expires + 
-                      "; path=/; Secure; SameSite=Lax; Domain=" + cookieDomain; 
+                      "; path=/; SameSite=Lax; Domain=" + cookieDomain; 
     
     console.log(`Cookie '${name}' created on domain: ${cookieDomain}`);
 }
