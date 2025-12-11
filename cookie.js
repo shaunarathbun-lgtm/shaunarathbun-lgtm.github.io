@@ -68,16 +68,11 @@ function setCookie(name, value, days) {
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
-    
-    // FIX: Removed the leading dot. Cookie is valid ONLY for this exact host.
-    const cookieDomain = "auth.ort-one-pingone.com"; 
-
-    // The corrected, secure, and explicit-domain version
     document.cookie = name + "=" + (value || "") + expires + 
-                      "; path=/; SameSite=Lax; Domain=" + cookieDomain; 
-    
-    console.log(`Cookie '${name}' created on domain: ${cookieDomain}`);
+                  "; path=/; Secure; SameSite=None";
+    console.log(`Cookie '${name}' created!`);
 }
+
 
 // Example usage (assuming you want to set a cookie named 'session_id' 
 // with value '12345' for 7 days):
