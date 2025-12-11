@@ -69,7 +69,11 @@ function setCookie(name, value, days) {
         expires = "; expires=" + date.toUTCString();
     }
     //document.cookie = "auth_token=xyz123; Max-Age=3600; Path=/; Domain=example.com; Secure; SameSite=Lax";
-    document.cookie = name + "=" + (value || "") + expires + "; path=/; Domain=auth.ort-one-pingone.com";
+    // The corrected, secure, and explicit-domain version
+    document.cookie = name + "=" + (value || "") + expires + "; Path=/" +
+        "; Domain=auth.ort-one-pingone.com" +
+        "; Secure" +                         
+        "; SameSite=Lax";                   
     console.log(`Cookie '${name}' created!`);
 }
 
