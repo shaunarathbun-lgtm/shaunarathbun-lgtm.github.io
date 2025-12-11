@@ -68,12 +68,8 @@ function setCookie(name, value, days) {
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
-    
-    // **SECURITY ENHANCEMENTS ADDED HERE**
-    
-
-    document.cookie = name + "=" + (value || "") + expires + "; path=/; Secure;" 
-    console.log(`Cookie '${name}' created with security attributes!`);
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    console.log(`Cookie '${name}' created!`);
 }
 
 // Example usage (assuming you want to set a cookie named 'session_id' 
