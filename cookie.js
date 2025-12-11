@@ -69,7 +69,7 @@ function setCookie(name, value, days) {
         expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + (value || "") + expires + 
-                  "; path=/; Secure; SameSite=None";
+                  "; path=/; SameSite=None";
     console.log(`Cookie '${name}' created!`);
 }
 
