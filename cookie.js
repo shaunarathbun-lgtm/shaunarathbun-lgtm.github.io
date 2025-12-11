@@ -68,6 +68,7 @@ function setCookie(name, value, days) {
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
+    //document.cookie = "auth_token=xyz123; Max-Age=3600; Path=/; Domain=example.com; Secure; SameSite=Lax";
     document.cookie = name + "=" + (value || "") + expires + "; path=/; Domain=auth.ort-one-pingone.com";
     console.log(`Cookie '${name}' created!`);
 }
