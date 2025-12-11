@@ -70,7 +70,7 @@ function setCookie(name, value, days) {
     }
     //document.cookie = "auth_token=xyz123; Max-Age=3600; Path=/; Domain=example.com; Secure; SameSite=Lax";
     // The corrected, secure, and explicit-domain version
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    document.cookie = name + "=" + (value || "") + expires + "; path=/; Domain=auth.ort-one-pingone.com; SameSite=Lax";
     console.log(`Cookie '${name}' created!`);
 }
 
