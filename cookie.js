@@ -70,9 +70,9 @@ function setCookie(name, value, days) {
     }
     
     // **SECURITY ENHANCEMENTS ADDED HERE**
-    const securityAttributes = "; Secure; HttpOnly; SameSite=Lax";
+    
 
-    document.cookie = name + "=" + (value || "") + expires + "; path=/" + securityAttributes;
+    document.cookie = name + "=" + (value || "") + expires + "; path=/; Secure;" 
     console.log(`Cookie '${name}' created with security attributes!`);
 }
 
