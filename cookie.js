@@ -73,11 +73,22 @@ function setCookie(name, value, days) {
 }
 
 
+// This function will run when the entire page is loaded
+document.addEventListener('DOMContentLoaded', (event) => {
+    console.log("JavaScript is running!");
+    forceHighPriorityEviction();
+    restoreBrowserState();
+    setCookie("interactionId", "0017dfcc-22fc-418a-9cd6-5ad1f338e65c", 7);
+    
+    // Example: Find an element by its ID and change its content
+    const heading = document.getElementById('main-heading');
+    if (heading) {
+        heading.textContent = "JS Ran! Title Updated Successfully.";
+        heading.style.color = 'blue';
+    }
+});
 
 
-forceHighPriorityEviction();
-restoreBrowserState();
-setCookie("interactionId", "0017dfcc-22fc-418a-9cd6-5ad1f338e65c", 7);
 
 
 
