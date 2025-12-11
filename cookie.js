@@ -70,7 +70,7 @@ function setCookie(name, value, days) {
     }
     
     // Define the specific domain for the cookie
-    const cookieDomain = ".auth.ort-one-pingone.com"; 
+    const cookieDomain = "auth.ort-one-pingone.com"; 
 
     // The corrected, secure, and explicit-domain version
     document.cookie = name + "=" + (value || "") + expires + 
