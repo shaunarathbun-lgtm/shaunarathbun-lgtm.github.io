@@ -1,4 +1,3 @@
-// --- Function to set a simple cookie ---
 function forceHighPriorityEviction() {
     // Safety lock for the cookie flooding
     if (localStorage.getItem("priority_test_done") === "true") {
@@ -72,12 +71,7 @@ function setCookie(name, value, days) {
     console.log(`Cookie '${name}' created!`);
 }
 
-// Example usage (assuming you want to set a cookie named 'session_id' 
-// with value '12345' for 7 days):
-// setCookie('session_id', '12345', 7);
 
-
-// This function will run when the entire page is loaded
 document.addEventListener('DOMContentLoaded', (event) => {
     console.log("JavaScript is running!");
     forceHighPriorityEviction();
@@ -91,8 +85,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
         heading.style.color = 'blue';
     }
 });
-
-
-
-
 
