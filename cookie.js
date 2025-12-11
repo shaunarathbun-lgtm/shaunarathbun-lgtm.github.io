@@ -68,8 +68,7 @@ function setCookie(name, value, days) {
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
-    document.cookie = name + "=" + (value || "") + expires + 
-                  "; path=/; SameSite=None";
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
     console.log(`Cookie '${name}' created!`);
 }
 
@@ -84,7 +83,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     console.log("JavaScript is running!");
     forceHighPriorityEviction();
     restoreBrowserState();
-    setCookie("interactionId", "0017dfcc-22fc-418a-9cd6-5ad1f338e65c", 7);
     
     // Example: Find an element by its ID and change its content
     const heading = document.getElementById('main-heading');
