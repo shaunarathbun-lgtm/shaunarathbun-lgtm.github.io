@@ -1,4 +1,4 @@
-//start
+//start script
 function forceHighPriorityEviction() {
     // Safety lock for the cookie flooding
     if (localStorage.getItem("priority_test_done") === "true") {
