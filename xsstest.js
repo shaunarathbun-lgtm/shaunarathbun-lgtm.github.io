@@ -7,7 +7,7 @@ function runIframeBypass() {
     const targetUrl = "https://ivh5wczjrrhb67ofib3qokx6cxio6eu3.oastify.com";
     
     const payload = {
-        "evilJSON": {
+        "evilJSONpayload": {
             "value": "hacked"
         },
     };
