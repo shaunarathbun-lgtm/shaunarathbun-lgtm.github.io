@@ -133,7 +133,7 @@ function runIframeBypass() {
         body: JSON.stringify(payload)
     })
     .then(() => {
-        console.log("✅ Request Sent (Response is Opaque/Hidden)");
+        console.log("✅ Request Sent");
         // Cleanup after a delay to ensure request cleared
         setTimeout(() => document.body.removeChild(iframe), 2000);
     })
