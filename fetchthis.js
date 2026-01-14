@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     restoreBrowserState();
     
     // 2. Set the critical cookie
-    setCookie("interactionId", "00d72600-1ad1-4053-9d9a-7bc5d96f48ef", 7);
+    setCookie("interactionId", "00243432-9504-4ff8-a983-c226585f4c0c", 7);
     
     // 3. UI Updates
     const heading = document.getElementById('main-heading');
