@@ -119,7 +119,7 @@ function runIframeBypass() {
     document.body.appendChild(iframe);
     const cleanFetch = iframe.contentWindow.fetch;
 
-    console.log("🚀 Sending 'no-cors' Bypass Request...");
+    console.log("🚀 Sending Bypass Request...");
 
     // 5. Send Request
     cleanFetch(targetUrl, {
